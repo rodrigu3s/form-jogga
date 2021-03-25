@@ -80,12 +80,64 @@ $( "#form-web" ).validate({
   });
 
 
-const createClient = ( name, email, password, account_name, account_description, campaign_name,campaign_description, key_adword, origin, budget, phonetrack, mailings) =>{
+  
+
+// function addTable(){
+//     document.getElementById("addform").innerHTML = `
+//     <div class="form-row" id="form-row">
+//         <div class="form-group col-md-6" >
+//             <label for="mailings-name">Nome</label>
+//             <input type="text" class="form-control" id="mailings-name" name="mailings-name" data-mailings>
+//         </div>
+//         <div class="form-group col-md-6">
+//             <label for="mailings-email">Email</label>
+//             <input type="email" class="form-control" id="mailings-email" name="mailings-email" data-mailings>
+//         </div>
+//     </div>      
+//     ` 
+
+// }
+
+var maxForm = 0;
+
+$("#toAdd").click(function(){
+    maxForm++
+    if(maxForm <= 2){
+        $("#addform").append( `
+        <div class="form-row" id="form-row">
+                <div class="form-group col-md-6" >
+                  <label for="mailings_name">Nome</label>
+                  <input type="text" class="form-control" id="mailings_name" name="mailings_name" data-mailings-name${maxForm}>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="mailings_email">Email</label>
+                  <input type="email" class="form-control" id="mailings_email" name="mailings_email" data-mailings-email${maxForm} >
+                </div>
+        </div>
+        `);
+    }else{
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const createClient = ( name, email, password, account_name, account_description, campaign_name,campaign_description, key_adword, origin, budget, phonetrack, mailings_name, mailings_email ) =>{
     return fetch(`http://localhost:3000/profile`,{
         method: 'POST',
         headers:{
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Accept': 'application/json',  
+            'Content-Type': 'application/json' 
         },
         body: JSON.stringify({
         name: name,
@@ -100,7 +152,7 @@ const createClient = ( name, email, password, account_name, account_description,
         origin: origin,
         budget: budget,
         phonetrack: phonetrack,
-        mailings: mailings
+        mailings: [{ mailings_name, mailings_email }]
 
         })
     })
@@ -124,9 +176,10 @@ formulario.addEventListener('submit', (evento)=>{
     const origin = evento.target.querySelector('[data-origin]').value
     const budget = evento.target.querySelector('[data-budget]').value
     const phonetrack = evento.target.querySelector('[data-phonetrack]').value
-    const mailings = evento.target.querySelector('[data-mailings]').value
+    const mailings_name = evento.target.querySelector('[data-mailings-name]').value
+    const mailings_email = evento.target.querySelector('[data-mailings-email]').value
 
-    createClient(name, email, password, account_name, account_description, campaign_name, campaign_description, key_adword, origin, budget, phonetrack, mailings  )
+    createClient(name, email, password, account_name, account_description, campaign_name, campaign_description, key_adword, origin, budget, phonetrack, mailings_name, mailings_email  )
 })
   
 

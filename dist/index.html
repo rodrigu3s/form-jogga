@@ -51,7 +51,7 @@
             </div>
             <div class="form-row">
               <div class="form-group col-md-4">
-                <label for="key_adword">Chave</label>
+                <label for="key_adword">Id de Campanha</label>
                 <input type="text" class="form-control" id="key_adword" name="key_adword" data-key_adword >
               </div>
               <div class="form-group col-md-4">
@@ -71,11 +71,36 @@
                 <label for="phonetrack">Telefone</label>
                 <input type="text" class="form-control" id="phonetrack" name="phonetrack" data-phonetrack>
             </div>
-            <div class="form-group">
-                <label for="mailings">Mailings</label>
-                <input type="text" class="form-control" id="mailings" name="mailings" data-mailings>
+            <!-- <table id="ta">
+              <tr>
+
+                <td>
+                  <input type="text" class="form-control" id="mailings-name" name="mailings-name" data-mailings>
+                </td>
+
+                <td>
+                  <input type="email" class="form-control" id="mailings-email" name="mailings-email" data-mailings>
+                </td>
+
+              </tr>
+              
+            </table> -->
+            
+            
+            <div id="addform">
+              <div class="form-row" id="form-row">
+                <div class="form-group col-md-6" >
+                  <label for="mailings_name">Nome</label>
+                  <input type="text" class="form-control" id="mailings_name" name="mailings_name" data-mailings-name>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="mailings_email">Email</label>
+                  <input type="email" class="form-control" id="mailings_email" name="mailings_email" data-mailings-email>
+                </div>
+              </div>
             </div>
-           
+
+            <button type="button" id="toAdd" class="btn btn-primary">Adicionar</button>
             <button type="submit" class="btn btn-primary">Enviar</button>
           </form>
     </div>

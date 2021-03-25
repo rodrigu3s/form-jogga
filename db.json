@@ -4,7 +4,70 @@
       "name": "Jacauna Móveis",
       "email": "jacaunamoveisceara@gmail.com",
       "login": "jacaunamoveisceara@gmail.com",
-      "password": "5371#JacaunaM",
+      "password": "123",
+      "account_name": "Jacauna Móveis",
+      "account_description": "Conta pertencente ao Jacauna Móveis",
+      "campaign_name": "Jacauna Móveis",
+      "campaign_description": "Campanha pertencente à Jacauna Móveis",
+      "key_adword": "322-649-9835",
+      "origin": "Google",
+      "budget": "1000.00",
+      "phonetrack": "(81) 3325-2927",
+      "mailings": [
+        {
+          "mailings_name": "jacauna",
+          "mailings_email": "jj@gmail.com"
+        }
+      ],
+      "id": 1
+    },
+    {
+      "name": "Jacauna Móveis",
+      "email": "joaorodrigues@gmail.com",
+      "login": "joaorodrigues@gmail.com",
+      "password": "12323",
+      "account_name": "Jacauna Móveis",
+      "account_description": "Conta pertencente ao Jacauna Móveis",
+      "campaign_name": "Jacauna Móveis",
+      "campaign_description": "Campanha pertencente à Jacauna Móveis",
+      "key_adword": "322-649-9835",
+      "origin": "Google",
+      "budget": "1000.00",
+      "phonetrack": "(81) 3325-2927",
+      "mailings": [
+        {
+          "mailings_name": "jacauna",
+          "mailings_email": "jj@gmail.com"
+        }
+      ],
+      "id": 2
+    },
+    {
+      "name": "Jacauna Móveis",
+      "email": "joaorodrigues@gmail.com",
+      "login": "joaorodrigues@gmail.com",
+      "password": "12323",
+      "account_name": "Jacauna Móveis",
+      "account_description": "Conta pertencente ao Jacauna Móveis",
+      "campaign_name": "Jacauna Móveis",
+      "campaign_description": "Campanha pertencente à Jacauna Móveis",
+      "key_adword": "322-649-9835",
+      "origin": "Google",
+      "budget": "1000.00",
+      "phonetrack": "(81) 3325-2927",
+      "mailings": [
+        {
+          "mailings_name": "jacauna",
+          "mailings_email": "jj@gmail.com"
+        }
+      ],
+      "id": 3
+    },
+    {
+      "name": "Jacauna Móveis",
+      "email": "jacaunamoveisceara@gmail.com",
+      "login": "jacaunamoveisceara@gmail.com",
+      "password": "asdsf",
       "account_name": "Jacauna Móveis",
       "account_description": "Conta pertencente ao Jacauna Móveis",
       "campaign_name": "Jacauna Móveis",
@@ -13,8 +76,13 @@
       "origin": "Google",
       "budget": " 1000.00",
       "phonetrack": "(81) 3325-2927",
-      "mailings": "jacaunamoveisceara",
-      "id": 1
+      "mailings": [
+        {
+          "mailings_name": "jacauna",
+          "mailings_email": "jj@gmail.com"
+        }
+      ],
+      "id": 4
     }
   ]
 }
