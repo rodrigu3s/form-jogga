@@ -1,3 +1,4 @@
+const QTD_MAX_MAILINGS = 3
 // Valida Número de Telefone
 const length = 15;
 $('#phonetrack').mask('(00) 0000-00009');
@@ -22,139 +23,106 @@ $( "#eye" ).mousedown(function() {
 
 
 // Valida Formulário
-$( "#form-web" ).validate({
-    rules: {
-        mandatory: {
-            required: true,
-            minlength: 3
-        },
-        email: {
-            required: true,
-            email: true
-        },
-        phonetrack:{
-            required: true
-        },
-        account_name: {
-            required: true,
-            minlength: 3
-        },
-        account_description:{
-            required: true,
-            minlength: 3
-        },
-        campaign_name:{
-            required: true,
-            minlength: 3
-        },
-        campaign_description: {
-            required: true,
-            minlength: 3
-        },
-        key_adword: {
-            required: true,
-            minlength: 3
-        },
-        budget: {
-            required: true,
-            minlength: 3
-        },
-        mailings:{
-            required: true,
-            minlength: 3
-        }
-    },
-    messages:{
-        mandatory: {
-            required: "Campo Obrigatório",
-            minlength: "Nome deve Conter no Minimo 3 Letras"
-        },
-        email: {
-            required: "Campo Obrigatório",
-            email: "Email não é Válido"
-        },
-        phonetrack:{
-            required: "Campo Obrigatório"
-        }
-    }
-  });
+// $( "#form" ).validate({
+//     rules: {
+//         mandatory: {
+//             required: true,
+//             minlength: 3
+//         },
+//         email: {
+//             required: true,
+//             email: true
+//         },
+//         phonetrack:{
+//             required: true
+//         },
+//         account_name: {
+//             required: true,
+//             minlength: 3
+//         },
+//         account_description:{
+//             required: true,
+//             minlength: 3
+//         },
+//         campaign_name:{
+//             required: true,
+//             minlength: 3
+//         },
+//         campaign_description: {
+//             required: true,
+//             minlength: 3
+//         },
+//         key_adword: {
+//             required: true,
+//             minlength: 3
+//         },
+//         budget: {
+//             required: true,
+//             minlength: 3
+//         },
+//         mailings:{
+//             required: true,
+//             minlength: 3
+//         }
+//     },
+//     messages:{
+//         mandatory: {
+//             required: "Campo Obrigatório",
+//             minlength: "Nome deve Conter no Minimo 3 Letras"
+//         },
+//         email: {
+//             required: "Campo Obrigatório",
+//             email: "Email não é Válido"
+//         },
+//         phonetrack:{
+//             required: "Campo Obrigatório"
+//         }
+//     }
+//   });
 
 
-  
 
-// function addTable(){
-//     document.getElementById("addform").innerHTML = `
-//     <div class="form-row" id="form-row">
-//         <div class="form-group col-md-6" >
-//             <label for="mailings-name">Nome</label>
-//             <input type="text" class="form-control" id="mailings-name" name="mailings-name" data-mailings>
-//         </div>
-//         <div class="form-group col-md-6">
-//             <label for="mailings-email">Email</label>
-//             <input type="email" class="form-control" id="mailings-email" name="mailings-email" data-mailings>
-//         </div>
-//     </div>      
-//     ` 
-
-// }
-
-var maxForm = 0;
-
-$("#toAdd").click(function(){
-    maxForm++
-    if(maxForm <= 2){
+var maxForm = 2;
+var cont = 1;
+$("#toAdd").on("click", function() {
+    if(maxForm <= QTD_MAX_MAILINGS){
         $("#addform").append( `
-        <div class="form-row" id="form-row">
+        <div class="form-row align-items-center" id="form-row${cont}">
                 <div class="form-group col-md-6" >
                   <label for="mailings_name">Nome</label>
-                  <input type="text" class="form-control" id="mailings_name" name="mailings_name" data-mailings-name${maxForm}>
+                  <input type="text" class="form-control mailings_name" name="mailings_name-${maxForm}" >
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-5">
                   <label for="mailings_email">Email</label>
-                  <input type="email" class="form-control" id="mailings_email" name="mailings_email" data-mailings-email${maxForm} >
+                  <input type="email" class="form-control mailings_email" name="mailings_email-${maxForm}" >
                 </div>
+                <button type="button" id="${cont}" class="btn-delete btn btn-danger">Excluir</button>
         </div>
         `);
+        maxForm++
+        cont ++
     }else{
     }
+
+});
+
+
+$( "form" ).on( "click", ".btn-delete", function() {
+    var button_id = $( this ).attr("id");
+    $("#form-row"+ button_id).remove()
+    maxForm--
 });
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-const createClient = ( name, email, password, account_name, account_description, campaign_name,campaign_description, key_adword, origin, budget, phonetrack, mailings_name, mailings_email ) =>{
+const createClient = (options) => {
     return fetch(`http://localhost:3000/profile`,{
         method: 'POST',
         headers:{
             'Accept': 'application/json',  
             'Content-Type': 'application/json' 
         },
-        body: JSON.stringify({
-        name: name,
-        email: email,
-        login: email,
-        password: password,
-        account_name: account_name,
-        account_description: account_description,
-        campaign_name: campaign_name,
-        campaign_description: campaign_description,
-        key_adword: key_adword,
-        origin: origin,
-        budget: budget,
-        phonetrack: phonetrack,
-        mailings: [{ mailings_name, mailings_email }]
-
-        })
+        body: JSON.stringify(options)
     })
 
     .then( resposta=>{
@@ -162,31 +130,77 @@ const createClient = ( name, email, password, account_name, account_description,
     })
 }
 
-const formulario = document.querySelector("[data-form]")
-formulario.addEventListener('submit', (evento)=>{
-    evento.preventDefault()
-    const name = evento.target.querySelector('[data-name]').value
-    const email = evento.target.querySelector('[data-email]').value
-    const password = evento.target.querySelector('[data-password]').value
-    const account_name = evento.target.querySelector('[data-account_name]').value
-    const account_description = evento.target.querySelector('[data-account_description]').value
-    const campaign_name = evento.target.querySelector('[data-campaign_name]').value
-    const campaign_description = evento.target.querySelector('[data-campaign_description]').value
-    const key_adword = evento.target.querySelector('[data-key_adword]').value
-    const origin = evento.target.querySelector('[data-origin]').value
-    const budget = evento.target.querySelector('[data-budget]').value
-    const phonetrack = evento.target.querySelector('[data-phonetrack]').value
-    const mailings_name = evento.target.querySelector('[data-mailings-name]').value
-    const mailings_email = evento.target.querySelector('[data-mailings-email]').value
 
-    createClient(name, email, password, account_name, account_description, campaign_name, campaign_description, key_adword, origin, budget, phonetrack, mailings_name, mailings_email  )
+document.addEventListener('submit', (event)=>{
+    event.preventDefault()
+    
+    const formEntries = new FormData(event.target).entries()
+    let formObject = {}
+    Array.from(formEntries).forEach(entry =>{ 
+        formObject = {...formObject, [entry[0]]: entry[1] }
+    })
+
+    formObject.phonetrack = formObject.phonetrack.replace(/\D/g, "")
+    formObject.budget = Number(formObject.budget)
+
+    formObject = tranforMailings(formObject)
+    createClient(formObject)
 })
-  
 
-  
-  
-  
-  
-  
- 
-  
+function tranforMailings(formObject){
+    formObject.mailings  = []
+
+    for(let i = 1; i <= QTD_MAX_MAILINGS; i++){
+
+        if (formObject[`mailings_name-${i}`] || formObject[`mailings_email-${i}`]) {
+            formObject.mailings = [...formObject.mailings, {
+                name: formObject[`mailings_name-${i}`],
+                email: formObject[`mailings_email-${i}`]
+            }]
+            delete formObject[`mailings_name-${i}`]
+            delete formObject[`mailings_email-${i}`]
+        }
+    }
+
+    return formObject
+}
+   
+
+
+
+
+
+
+
+
+
+
+
+
+// const mailings_name = Array.from(document.querySelectorAll(`${event.target.id} .mailings_name`))
+    // const mailings_name_array = [] 
+    // mailings_name.forEach(mail =>{
+    //     const obj_name = {}
+    //     const [name, id] = mail.name.split('-')
+    //     // console.log(name, id);
+    //     obj_name[name] = mail.value
+    //     obj_name["id"] = id
+    //     console.log(obj_name);
+    //     mailings_name_array.push(obj_name)
+    // })
+
+
+    // const mailings_email = Array.from(document.querySelectorAll(`${event.target.id} .mailings_email`))
+    // const mailings_email_array = [] 
+    // mailings_email.forEach(mail=>{
+    //     const obj_email = {}
+    //     obj_email[mail.name] = mail.value
+    //     mailings_email_array.push(obj_email)
+    // })
+
+    // let teste = mailings_name_array.concat(mailings_email_array)
+
+    // console.log(teste)
+
+    // console.log(teste)
+    // console.log(mailings_email_array)
