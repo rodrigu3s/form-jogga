@@ -1,4 +1,4 @@
-const QTD_MAX_MAILINGS = 3
+const QTD_MAX_MAILINGS = [1]
 // Valida Número de Telefone
 const length = 15;
 $('#phonetrack').mask('(00) 0000-00009');
@@ -81,25 +81,27 @@ $( "#eye" ).mousedown(function() {
 //   });
 
 
-
 var maxForm = 2;
+var contId = 2;
 var cont = 1;
 $("#toAdd").on("click", function() {
-    if(maxForm <= QTD_MAX_MAILINGS){
+    QTD_MAX_MAILINGS.push(contId)
+    if(maxForm <= QTD_MAX_MAILINGS.length){
         $("#addform").append( `
         <div class="form-row align-items-center" id="form-row${cont}">
                 <div class="form-group col-md-6" >
                   <label for="mailings_name">Nome</label>
-                  <input type="text" class="form-control mailings_name" name="mailings_name-${maxForm}" >
+                  <input type="text" class="form-control mailings_name" name="mailings_name-${contId}" >
                 </div>
                 <div class="form-group col-md-5">
                   <label for="mailings_email">Email</label>
-                  <input type="email" class="form-control mailings_email" name="mailings_email-${maxForm}" >
+                  <input type="email" class="form-control mailings_email" name="mailings_email-${contId}" >
                 </div>
                 <button type="button" id="${cont}" class="btn-delete btn btn-danger">Excluir</button>
         </div>
         `);
         maxForm++
+        contId++
         cont ++
     }else{
     }
@@ -110,6 +112,7 @@ $("#toAdd").on("click", function() {
 $( "form" ).on( "click", ".btn-delete", function() {
     var button_id = $( this ).attr("id");
     $("#form-row"+ button_id).remove()
+    contId+2
     maxForm--
 });
 
@@ -150,13 +153,13 @@ document.addEventListener('submit', (event)=>{
 function tranforMailings(formObject){
     formObject.mailings  = []
 
-    for(let i = 1; i <= QTD_MAX_MAILINGS; i++){
+    for(let i = 1; i <= QTD_MAX_MAILINGS.length; i++){
 
-        if (formObject[`mailings_name-${i}`] || formObject[`mailings_email-${i}`]) {
-            formObject.mailings = [...formObject.mailings, {
+        if (formObject[`mailings_name-${i}`] && formObject[`mailings_email-${i}`]) {
+            formObject.mailings.push({
                 name: formObject[`mailings_name-${i}`],
                 email: formObject[`mailings_email-${i}`]
-            }]
+            })
             delete formObject[`mailings_name-${i}`]
             delete formObject[`mailings_email-${i}`]
         }
@@ -178,16 +181,16 @@ function tranforMailings(formObject){
 
 
 // const mailings_name = Array.from(document.querySelectorAll(`${event.target.id} .mailings_name`))
-    // const mailings_name_array = [] 
-    // mailings_name.forEach(mail =>{
-    //     const obj_name = {}
-    //     const [name, id] = mail.name.split('-')
-    //     // console.log(name, id);
-    //     obj_name[name] = mail.value
-    //     obj_name["id"] = id
-    //     console.log(obj_name);
-    //     mailings_name_array.push(obj_name)
-    // })
+//     const mailings_name_array = [] 
+//     mailings_name.forEach(mail =>{
+//         const obj_name = {}
+//         const [name, id] = mail.name.split('-')
+//         // console.log(name, id);
+//         obj_name[name] = mail.value
+//         obj_name["id"] = id
+//         console.log(obj_name);
+//         mailings_name_array.push(obj_name)
+//     })
 
 
     // const mailings_email = Array.from(document.querySelectorAll(`${event.target.id} .mailings_email`))
