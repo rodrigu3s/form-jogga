@@ -22,7 +22,7 @@ function html() {
             prefix: '@@',           
             basepath: '@file'        
         }))
-        // .pipe(htmlmin({collapseWhitespace: true })) 
+        .pipe(htmlmin({collapseWhitespace: true })) 
         .on('error', swallowError)
         .pipe(dest(PATHS.html.dist));
 };
