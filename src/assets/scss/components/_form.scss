@@ -16,10 +16,10 @@
     align-items: center;
     justify-content: space-between;
     margin-top: 30px;
-}
 
-.mailingsAdd h2 {
-    font-weight: bold;
+    &__title {
+        font-weight: bold;
+    }
 }
 
 .btnSubmit{

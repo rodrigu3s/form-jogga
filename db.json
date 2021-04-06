@@ -1,30 +1,3 @@
 {
-  "profile": [
-    {
-      "name": "João",
-      "email": "jacaunamoveisceara@gmail.com",
-      "password": "2323",
-      "account_name": "Jacauna Móveis",
-      "account_description": "Conta pertencente ao Jacauna Móveis",
-      "campaign_name": "Jacauna Móveis",
-      "campaign_description": "campanha da jogga",
-      "budget": 3333,
-      "phonetrack": "8133252927",
-      "mailings": [
-        {
-          "name": "joao",
-          "email": "jj@gmail.com"
-        },
-        {
-          "name": "iago",
-          "email": "asdd@gmail.com"
-        },
-        {
-          "name": "josé",
-          "email": "ss@gmail.com"
-        }
-      ],
-      "id": 1
-    }
-  ]
+  "profile": []
 }
