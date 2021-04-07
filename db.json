@@ -1,3 +1,31 @@
 {
-  "profile": []
+  "profile": [
+    {
+      "mailings": [
+        {
+          "name": "joao",
+          "email": "jj@gmail.com"
+        },
+        {
+          "name": "jose",
+          "email": "aa@gmail.com"
+        },
+        {
+          "name": "maria",
+          "email": "ee@gmail.com"
+        }
+      ],
+      "name": "João",
+      "email": "jacaunamoveisceara@gmail.com",
+      "password": "54545",
+      "account_name": "Jacauna Móveis",
+      "account_description": "Conta pertencente ao Jacauna Móveis",
+      "campaign_name": "Jacauna Móveis",
+      "campaign_description": "campanha da jogga",
+      "key_adword": "322-649-9835",
+      "budget": 3333,
+      "phonetrack": "8133252927",
+      "id": 1
+    }
+  ]
 }
