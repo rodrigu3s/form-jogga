@@ -26,6 +26,47 @@
       "budget": 3333,
       "phonetrack": "8133252927",
       "id": 1
+    },
+    {
+      "mailings": [],
+      "name": "",
+      "email": "",
+      "password": "",
+      "account_name": "",
+      "account_description": "",
+      "campaign_name": "",
+      "campaign_description": "",
+      "key_adword": "",
+      "budget": 0,
+      "phonetrack": "",
+      "id": 2
+    },
+    {
+      "mailings": [
+        {
+          "name": "joao",
+          "email": "jj@gmail.com"
+        },
+        {
+          "name": "maria",
+          "email": "ee@gmail.com"
+        },
+        {
+          "name": "joohn",
+          "email": "aa@gmail.com"
+        }
+      ],
+      "name": "João",
+      "email": "jacaunamoveisceara@gmail.com",
+      "password": "2323",
+      "account_name": "Jacauna Móveis",
+      "account_description": "Conta pertencente ao Jacauna Móveis",
+      "campaign_name": "Jacauna Móveis",
+      "campaign_description": "campanha da jogga",
+      "key_adword": "322-649-9835",
+      "budget": 3333,
+      "phonetrack": "8133252927",
+      "id": 3
     }
   ]
 }
